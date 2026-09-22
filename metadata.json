@@ -1,0 +1,6 @@
+{
+  "name": "Giftly.diy",
+  "description": "Collaborative gift-planning for celebrations and secret group exchanges. Better gifts. Less guessing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
