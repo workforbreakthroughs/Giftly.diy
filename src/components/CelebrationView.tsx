@@ -486,10 +486,10 @@ export const CelebrationView: React.FC<CelebrationViewProps> = ({
                 <div
                   key={note.id}
                   id={`note-card-${note.id}`}
-                  className={`rounded-2xl p-3 border flex flex-col justify-between transition-all text-xs ${
+                  className={`rounded-2xl p-3 border flex flex-col justify-between transition-all duration-150 text-xs ${
                     note.isImportant
-                      ? 'border-[#CBA469] bg-white shadow-2xs ring-1 ring-[#CBA469]/30'
-                      : 'border-[#E2D6C5] bg-white hover:border-[#5C1525]/40'
+                      ? 'border-[#CBA469] bg-[#FAF8F3] shadow-2xs ring-1 ring-[#CBA469]/40 hover:border-[#5C1525] hover:ring-[#5C1525]/30 hover:shadow-xs'
+                      : 'border-[#E2D6C5] bg-white hover:border-[#5C1525]/40 hover:shadow-2xs'
                   }`}
                 >
                   <div>
@@ -503,7 +503,7 @@ export const CelebrationView: React.FC<CelebrationViewProps> = ({
                       </span>
 
                       {note.isImportant && (
-                        <span className="inline-flex items-center gap-0.5 text-[9px] font-bold text-[#8E253D]">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-[#FAF3E6] border border-[#ECD7AF] px-2 py-0.5 text-[9px] font-bold text-[#741D30] shadow-2xs" title="Pinned by organizer as high priority">
                           <Pin className="w-2.5 h-2.5 text-[#CBA469]" />
                           <span>Must Read</span>
                         </span>
