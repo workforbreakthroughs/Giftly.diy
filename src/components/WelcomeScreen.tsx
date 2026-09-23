@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { GiftlySpace } from '../types';
 import { Gift, ArrowRight, ShieldCheck, Plus, Link2, Sparkles, Clock, Check } from 'lucide-react';
 
@@ -19,6 +19,12 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
 }) => {
   const [inputUrlOrCode, setInputUrlOrCode] = useState('');
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, []);
 
   const handleJoinByInput = (e: React.FormEvent) => {
     e.preventDefault();

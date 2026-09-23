@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { GiftlySpace, GiftItem, CurrentUserSession, Participant, ReactionType } from '../types';
 import { MemberTile } from './MemberTile';
 import { ItemActionModal } from './ItemActionModal';
@@ -51,6 +51,13 @@ export const GroupGiftTilesView: React.FC<GroupGiftTilesViewProps> = ({
     memberName: string;
     isOwnWish: boolean;
   } | null>(null);
+
+  // Ensure scroll is at the top when entering the group tiles view
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, [space.id]);
 
   const [copiedLink, setCopiedLink] = useState(false);
 

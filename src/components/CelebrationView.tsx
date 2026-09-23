@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   GiftlySpace,
   GiftItem,
@@ -70,6 +70,13 @@ export const CelebrationView: React.FC<CelebrationViewProps> = ({
   const [selectedWishForAction, setSelectedWishForAction] = useState<GiftItem | null>(null);
   const [isAddNoteOpen, setIsAddNoteOpen] = useState(false);
   const [noteFilter, setNoteFilter] = useState<'all' | 'cautions' | 'preferences' | 'claimed'>('all');
+
+  // Ensure scroll is at the top when entering the celebration view
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, [space.id]);
 
   const totalGifts = space.gifts.length;
   const totalContributions = space.gifts.reduce(
@@ -207,15 +214,19 @@ export const CelebrationView: React.FC<CelebrationViewProps> = ({
                 </span>
               </div>
 
-              <a
-                href="#celebration-notes-section"
-                className="flex items-center gap-1.5 rounded-xl border border-[#E2D6C5] bg-white px-3 py-1.5 text-[#63544E] hover:border-[#8E253D] shadow-2xs transition"
+              <button
+                type="button"
+                onClick={() => {
+                  const el = document.getElementById('celebration-notes-section');
+                  el?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="flex items-center gap-1.5 rounded-xl border border-[#E2D6C5] bg-white px-3 py-1.5 text-[#63544E] hover:border-[#8E253D] shadow-2xs transition cursor-pointer"
               >
                 <AlertTriangle className="w-3.5 h-3.5 text-[#8E253D]" />
                 <span>
                   <strong className="text-[#300A12]">{notes.length}</strong> Notes & Caveats
                 </span>
-              </a>
+              </button>
             </div>
           </div>
 

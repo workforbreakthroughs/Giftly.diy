@@ -77,6 +77,11 @@ export default function App() {
       url.searchParams.delete('giftly');
       window.history.replaceState({}, '', url.toString());
     }
+
+    // Scroll to the top when entering or leaving a space
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
   }, [currentSpaceId]);
 
   // Listen to browser popstate (back/forward navigation)
@@ -128,6 +133,9 @@ export default function App() {
 
   // Actions
   const handleSelectSpace = (id: string) => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
     setCurrentSpaceId(id);
     const space = spaces.find((s) => s.id === id);
     if (space) {
@@ -136,6 +144,9 @@ export default function App() {
   };
 
   const handleGoHome = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
     setCurrentSpaceId('');
   };
 
